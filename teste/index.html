@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compre Já</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <div class="row" style="margin:30px 0">
+        <div class="col-lg-3">
+            <img src="img/logo.png" class="img-thumbnail">
+        </div>
+        <div class="col-lg-9">
+            <h3>Nome do Produto</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6" id="form-container">
+
+            <form id="step_1" class="form-step" onsubmit="validacao()">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Preencha seus dados para receber contato
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <fieldset>
+                            <div class="row form-group">
+                                <div class="col-lg-6">
+                                    <label>Nome Completo</label>
+                                    <input id="nome" class="form-control" type="text" name="nome">
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label>Data de Nascimento</label>
+                                    <input id="data_nascimento" class="form-control" type="date" name="data_nascimento">
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-lg-6">
+                                    <label>Email</label>
+                                    <input id="email" class="form-control" type="email" name="email">
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label>Telefone</label>
+                                    <input id="telefone" class="form-control" type="text" name="telefone">
+                                </div>
+                            </div>
+
+                            <div>
+                                <button type="submit" class="btn btn-lg btn-info next-step">Próximo Passo</button>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </form>
+
+            <form id="step_2" class="form-step" style="display:none">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Preencha seus dados para receber contato
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <fieldset>
+                            <div class="row form-group">
+                                <div class="col-lg-6">
+                                    <label>Região</label>
+                                    <select id="regiao" class="form-control" name="regiao">
+                                        <option value="">Selecione a sua região</option>
+                                        <option>Sul</option>
+                                        <option>Sudeste</option>
+                                        <option>Centro-Oeste</option>
+                                        <option>Nordeste</option>
+                                        <option>Norte</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label>Unidade</label>
+                                    <select id="unidade" class="form-control" name="unidade">
+                                      <option value="">Selecione a unidade mais próxima</option>
+<!--                                        <option>????</option>-->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <button id="enviar" type="submit" class="btn btn-lg btn-info next-step">Enviar</button>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </form>
+
+
+
+            <div id="step_sucesso" class="form-step" style="display:none">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Obrigado pelo cadastro!
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        Em breve você receberá uma ligação com mais informações!
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <h1>Chamada interessante para o produto</h1>
+            <h2>Mais uma informação relevante</h2>
+        </div>
+    </div>
+</div>
+
+
+<script>
+     $(function () {
+         // Variável json em texto
+         var jsonText = '{';
+         // Evento click no elemento com a classe .next-step
+         $('.next-step').click(function (event) {
+             event.preventDefault();
+             // Variável para validação
+             var erro = false;
+             $(this).parents('.form-step').find("input, select").each(function(index){
+                 // Validação do nome
+                if($(this).attr('name') == 'nome'){
+                    if(!($(this).val().trim().indexOf(" ") > 0)){
+                        alert("Digite o seu nome completo!");
+                        erro = true;
+                    }
+                }
+                //Validação de email
+                if ($(this).attr('name') == 'email') {
+                    if (!($(this).val().trim().match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/))) {
+                        alert("Digite um email válido!");
+                        erro = true;
+                    }
+                }
+
+                 //Validação de telefone
+                 // if ($(this).attr('name') == 'telefone') {
+                 //     if (!(Number.isInteger($(this).val()))) {
+                 //         alert("Digite um telefone válido!");
+                 //         erro = true;
+                 //     }
+                 // }
+
+                // Concatenção do Json
+                jsonText += '"' + $(this).attr('name') + '": "' + $(this).val() + '", ';
+             });
+
+             if(erro)
+                 return null;
+             //Próxima etapa do formulário
+             $(this).parents('.form-step').hide().next().show();
+         });
+
+         //atribui valores para o select da unidade
+         $("#regiao").change(function () {
+             
+             $("#unidade").empty();
+             $("#unidade").append('<option value="">Selecione a unidade mais próxima</option>');
+             switch ($(this).val()) {
+                 case ("Sul"):
+                     $("#unidade").append("<option value='Porto Alegre'>Porto Alegre</option>");
+                     $("#unidade").append("<option value='Curitiba'>Curitiba</option>");
+                     break;
+
+                 case ("Sudeste"):
+                     $("#unidade").append("<option value='São Paulo'>São Paulo</option>");
+                     $("#unidade").append("<option value='Rio De Janeiro'>Rio De Janeiro</option>");
+                     $("#unidade").append("<option value='Belo Horizonte'>Belo Horizonte</option>");
+                     break;
+
+                 case ("Centro-Oeste"):
+                     $("#unidade").append("<option value='Brasilia'>Brasília</option>");
+                     break;
+
+                 case ("Nordeste"):
+                     $("#unidade").append("<option value='Salvador'>Salvador</option>");
+                     $("#unidade").append("<option value='Recife'>Recife</option>");
+                     break;
+
+                 case ("Norte"):
+                     $("#unidade").append("<option value='Nao possui disponibilidade'>Não possui disponibilidade</option>");
+                     break;
+
+             }
+         });
+
+         //Define variavel da pontuação, iniciando com o valor inicial 10
+         var pontuacao = 10;
+
+         //Envia para o banco de dados o cadastro
+         $("#enviar").click(function(event){
+             event.preventDefault();
+             jsonText = jsonText.substr(0, jsonText.length-2);
+             jsonText += ',"pontuacao":' + '"'+pontuacao+'"'+"}"; // "}";
+
+             $.ajax({
+                 url: "cadastro.php",
+                 method: "POST",
+                 data: JSON.parse(jsonText)
+             }).success(function() {
+
+             });
+         });
+     });
+</script>
+</body>
+</html>
