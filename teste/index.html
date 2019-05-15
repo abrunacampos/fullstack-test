@@ -135,8 +135,10 @@
              event.preventDefault();
              // Variável para validação
              var erro = false;
+             //verificar cada input
              $(this).parents('.form-step').find("input, select").each(function(index){
-                 // Validação do nome
+
+                // Validação do nome
                 if($(this).attr('name') == 'nome'){
                     if(!($(this).val().trim().indexOf(" ") > 0)){
                         alert("Digite o seu nome completo!");
@@ -150,14 +152,16 @@
                         erro = true;
                     }
                 }
-
                  //Validação de telefone
-                 // if ($(this).attr('name') == 'telefone') {
-                 //     if (!(Number.isInteger($(this).val()))) {
-                 //         alert("Digite um telefone válido!");
-                 //         erro = true;
-                 //     }
-                 // }
+                 if ($(this).attr('name') == 'telefone') {
+                     if (!($(this).val().trim().match(/^\s*\d+\s*$/i))) {
+                         alert("Digite um telefone válido!");
+                         erro = true;
+                     } if ($(this).val().length<6){
+                         alert("Digite um telefone válido!");
+                         erro = true;
+                     }
+                 }
 
                 // Concatenção do Json
                 jsonText += '"' + $(this).attr('name') + '": "' + $(this).val() + '", ';
@@ -196,7 +200,8 @@
                      break;
 
                  case ("Norte"):
-                     $("#unidade").append("<option value='Nao possui disponibilidade'>Não possui disponibilidade</option>");
+                     $("#unidade").empty();
+                     $("#unidade").append("<option value='indisponivel'>INDISPONÍVEL</option>");
                      break;
 
              }
@@ -205,7 +210,7 @@
          //Define variavel da pontuação, iniciando com o valor inicial 10
          var pontuacao = 10;
 
-         //Envia para o banco de dados o cadastro
+         //Envia para o php os dados
          $("#enviar").click(function(event){
              event.preventDefault();
              jsonText = jsonText.substr(0, jsonText.length-2);

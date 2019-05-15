@@ -68,6 +68,40 @@ if (mysqli_query($conn, $sql)) {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
+//Enviar para API
+//Endereço da API
+$url = 'http://api.actualsales.com.br/join-asbr/ti/lead';
+//Dados para enviar
+$str = array(
+    "nome"=> $nome,
+    "email"=> $email,
+    "telefone"=> $telefone,
+    "regiao"=> $regiao,
+    "unidade"=>$unidade,
+    "data_nascimento"=> $nascimento,
+    "score"=> $pontuacao,
+    "token"=> "effeb58d5421c980bc4d2ecfea42b1d7"
+);
+//Converto os dados para enviar
+$data = http_build_query($str);
+//Inicia a Curl
+$sc = curl_init();
+
+//Configuração da Curl
+curl_setopt($sc, CURLOPT_URL, $url);
+curl_setopt($sc, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($sc, CURLOPT_POST, 1);
+curl_setopt($sc, CURLOPT_POSTFIELDS, $data);
+
+
+$output = curl_exec($sc);
+if ($output === FALSE){
+    echo "curl error: ".curl_error($sc);
+}
+curl_close($sc);
+print_r($output);
+
+
 //Encerra conexão com o banco de dados
 $conn->close();
 ?>
