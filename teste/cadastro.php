@@ -65,7 +65,7 @@ $sql = "INSERT INTO usuario (nome, dataNascimento, email,telefone,regiao,unidade
 VALUES ('$nome','$nascimento','$email','$telefone','$regiao','$unidade','$pontuacao')";
 
 if (mysqli_query($conn, $sql)) {
-    echo "Novo registro criado com sucesso!";
+    echo "Novo registro criado com sucesso no banco de dados!  ";
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
@@ -100,6 +100,6 @@ if ($output === FALSE){
     echo "curl error: ".curl_error($sc);
 }
 curl_close($sc);
-var_dump($output);
+echo($output);
 
 ?>

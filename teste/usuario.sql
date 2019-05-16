@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16/05/2019 às 05:46
+-- Tempo de geração: 16/05/2019 às 15:49
 -- Versão do servidor: 10.1.39-MariaDB
 -- Versão do PHP: 7.3.5
 
@@ -55,7 +55,13 @@ INSERT INTO `usuario` (`nome`, `dataNascimento`, `email`, `telefone`, `regiao`, 
 ('Maria Silva', '2010-10-10', 'maria@silva.com', 10203, 'Sudeste', 'Rio De Janeiro', 4, 62),
 ('Bruna Teste', '1993-08-22', 'bruna@teste.com', 2147483647, 'Sudeste', 'SÃ£o Paulo', 10, 66),
 ('b???? ??', '1993-08-22', 'bru@bru.com', 2147483647, 'Sul', 'Porto Alegre', 8, 67),
-('bruna Testando 2', '2002-04-23', 'bruna@teste.com', 2147483647, 'Centro-Oeste', 'BrasÃ­lia', 2, 69);
+('bruna Testando 2', '2002-04-23', 'bruna@teste.com', 2147483647, 'Centro-Oeste', 'BrasÃ­lia', 2, 69),
+('bru n', '1993-08-22', 'bruna@n.com', 2147483647, 'Centro-Oeste', 'BrasÃ­lia', 7, 70),
+('Bruna Arruda', '1999-01-23', 'bru@bru.com', 2147483647, 'Centro-Oeste', 'BrasÃ­lia', 7, 71),
+('bru b', '1980-08-22', 'bru@bru.com', 2147483647, 'Sul', 'Porto Alegre', 8, 72),
+('Bruna Arruda', '1993-08-22', 'bru@bruna.com', 2147483647, 'Sul', 'Curitiba', 8, 73),
+('Bruna Arruda', '1993-08-22', 'bru@bruna.com', 2147483647, 'Sul', 'Curitiba', 8, 74),
+('Bru Bruna', '1993-08-22', 'bruna@bruna.com', 2147483647, 'Sudeste', 'SÃ£o Paulo', 10, 75);
 
 --
 -- Índices de tabelas apagadas
@@ -75,7 +81,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

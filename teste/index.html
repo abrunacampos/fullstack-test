@@ -230,9 +230,10 @@
                  url: "cadastro.php",
                  method: "POST",
                  data: JSON.parse(jsonText)
-             }).success(function() {
-
+             }).done(function(response){
+                 alert(response);
              });
+
          });
 
      });
