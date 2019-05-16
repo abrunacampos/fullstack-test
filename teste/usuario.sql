@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16/05/2019 às 01:58
+-- Tempo de geração: 16/05/2019 às 05:46
 -- Versão do servidor: 10.1.39-MariaDB
 -- Versão do PHP: 7.3.5
 
@@ -53,7 +53,9 @@ INSERT INTO `usuario` (`nome`, `dataNascimento`, `email`, `telefone`, `regiao`, 
 ('Bruna Teste', '1993-08-22', 'bruna@campos.com', 123123, 'Sudeste', 'SÃ£o Paulo', 10, 60),
 ('Bruna Arruda', '1993-08-22', 'bruna@arruda.com', 121212, 'Sul', 'Porto Alegre', 8, 61),
 ('Maria Silva', '2010-10-10', 'maria@silva.com', 10203, 'Sudeste', 'Rio De Janeiro', 4, 62),
-('Bruna Teste', '1993-08-22', 'bruna@teste.com', 2147483647, 'Sudeste', 'SÃ£o Paulo', 10, 66);
+('Bruna Teste', '1993-08-22', 'bruna@teste.com', 2147483647, 'Sudeste', 'SÃ£o Paulo', 10, 66),
+('b???? ??', '1993-08-22', 'bru@bru.com', 2147483647, 'Sul', 'Porto Alegre', 8, 67),
+('bruna Testando 2', '2002-04-23', 'bruna@teste.com', 2147483647, 'Centro-Oeste', 'BrasÃ­lia', 2, 69);
 
 --
 -- Índices de tabelas apagadas
@@ -73,7 +75,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -23,18 +23,18 @@
 //echo ($resultado);
 
 $url = 'http://api.actualsales.com.br/join-asbr/ti/lead';
+$nome = "tes teste";
 $str = array(
-    "nome"=> "teste te",
+    "nome"=> $nome,
     "email"=> "teste@teste.com",
-    "telefone"=> "9980813234",
+    "telefone"=> "11523022",
     "regiao"=> "Sul",
     "unidade"=>"Curitiba",
-    "data_nascimento"=> "2010-10-10",
+    "data_nascimento"=> "1993-08-22",
     "score"=> "8",
     "token"=> "effeb58d5421c980bc4d2ecfea42b1d7"
     );
 $data = http_build_query($str);
-
 $sc = curl_init();
 
 curl_setopt($sc, CURLOPT_URL, $url);

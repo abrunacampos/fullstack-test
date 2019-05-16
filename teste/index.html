@@ -157,8 +157,18 @@
                      if (!($(this).val().trim().match(/^\s*\d+\s*$/i))) {
                          alert("Digite um telefone válido!");
                          erro = true;
-                     } if ($(this).val().length<10){
+                     } if ($(this).val().length<11){
                          alert("Digite um telefone válido!");
+                         erro = true;
+                     }
+                 }
+                 //Validação de data (min 01/11/1900 e max hoje)
+                 if ($(this).attr('name') == 'data_nascimento') {
+                     nascimento = new Date($(this).val());
+                     hoje = new Date();
+                     min = new Date('1900-11-1');
+                     if (nascimento > hoje || nascimento < min) {
+                         alert("Digite uma data válida!");
                          erro = true;
                      }
                  }
@@ -191,7 +201,7 @@
                      break;
 
                  case ("Centro-Oeste"):
-                     $("#unidade").append("<option value='Brasilia'>Brasília</option>");
+                     $("#unidade").append("<option value='Brasília'>Brasília</option>");
                      break;
 
                  case ("Nordeste"):
@@ -201,7 +211,7 @@
 
                  case ("Norte"):
                      $("#unidade").empty();
-                     $("#unidade").append("<option value='indisponivel'>INDISPONÍVEL</option>");
+                     $("#unidade").append("<option value='INDISPONÍVEL'>INDISPONÍVEL</option>");
                      break;
 
              }
