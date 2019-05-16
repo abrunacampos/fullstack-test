@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>teste api</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<script>
+
+    jsonText =  '{' +
+        '"nome": "teste te",'+
+        '"email": "teste@teste.com",'+
+        '"telefone": "123",'+
+        '"regiao": "Sul",'+
+        '"unidade":"Curitiba",'+
+        '"data_nascimento": "2010-10-10",'+
+        '"score": "8",'+
+        '"token": "effeb58d5421c980bc4d2ecfea42b1d7"'+
+        '}'
+
+    $.ajax({
+        url: "http://api.actualsales.com.br/join-asbr/ti/lead",
+        method: "POST",
+        data: JSON.parse(jsonText)
+    }).done(function(response) {
+        alert(response.message);
+    }).fail(function(response){
+        alert(response.responseJSON.message);
+    });
+
+</script>
+
+</body>
+</html>

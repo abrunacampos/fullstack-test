@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 15/05/2019 às 16:05
+-- Tempo de geração: 16/05/2019 às 01:58
 -- Versão do servidor: 10.1.39-MariaDB
 -- Versão do PHP: 7.3.5
 
@@ -37,7 +37,7 @@ CREATE TABLE `usuario` (
   `unidade` varchar(20) CHARACTER SET latin1 NOT NULL,
   `pontuacao` int(11) NOT NULL,
   `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Despejando dados para a tabela `usuario`
@@ -49,8 +49,11 @@ INSERT INTO `usuario` (`nome`, `dataNascimento`, `email`, `telefone`, `regiao`, 
 ('Pedro Paulo', '2010-11-20', 'pedro@paulo.com', 10203040, 'Sudeste', 'Rio De Janeiro', 4, 51),
 ('Gabriel Silva', '1920-01-10', 'gab@silva.com', 123123, 'Centro-Oeste', 'Brasilia', 4, 52),
 ('Amanda Barros', '1989-02-04', 'amanda@barros.com', 234234, 'Nordeste', 'Recife', 6, 53),
-('Ana Maria', '1968-03-22', 'ana@maria.com', 234234, 'Norte', 'Nao possui disponibi', 2, 54),
-('Olavo Junior', '1917-01-23', 'olavo@junior.com', 234234, 'Sudeste', 'SÃ£o Paulo', 5, 55);
+('Olavo Junior', '1917-01-23', 'olavo@junior.com', 234234, 'Sudeste', 'SÃ£o Paulo', 5, 55),
+('Bruna Teste', '1993-08-22', 'bruna@campos.com', 123123, 'Sudeste', 'SÃ£o Paulo', 10, 60),
+('Bruna Arruda', '1993-08-22', 'bruna@arruda.com', 121212, 'Sul', 'Porto Alegre', 8, 61),
+('Maria Silva', '2010-10-10', 'maria@silva.com', 10203, 'Sudeste', 'Rio De Janeiro', 4, 62),
+('Bruna Teste', '1993-08-22', 'bruna@teste.com', 2147483647, 'Sudeste', 'SÃ£o Paulo', 10, 66);
 
 --
 -- Índices de tabelas apagadas
@@ -70,7 +73,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

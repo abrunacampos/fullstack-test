@@ -69,7 +69,6 @@ if (mysqli_query($conn, $sql)) {
 }
 
 //Enviar para API
-//Endereço da API
 $url = 'http://api.actualsales.com.br/join-asbr/ti/lead';
 //Dados para enviar
 $str = array(
@@ -99,9 +98,6 @@ if ($output === FALSE){
     echo "curl error: ".curl_error($sc);
 }
 curl_close($sc);
-print_r($output);
+var_dump($output);
 
-
-//Encerra conexão com o banco de dados
-$conn->close();
 ?>
